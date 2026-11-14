@@ -1,0 +1,2 @@
+# Fuerza finales de línea LF (evita errores con scripts .sh y .sql en Windows)
+* text=auto eol=lf
