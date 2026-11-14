@@ -30,3 +30,4 @@ li span { flex: 1; }
 li.done span { text-decoration: line-through; color: #98a2b3; }
 .del { background: transparent; color: #98a2b3; padding: 4px 8px; }
 .del:hover { color: #b42318; }
+.counter { margin: 14px 0 0; color: #667085; font-size: .85rem; text-align: right; }

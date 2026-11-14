@@ -3,6 +3,7 @@ const list = document.getElementById('list');
 const form = document.getElementById('form');
 const input = document.getElementById('title');
 const statusBadge = document.getElementById('status');
+const counter = document.getElementById('counter');
 
 async function api(path, options = {}) {
   const res = await fetch(`/api${path}`, {
@@ -25,6 +26,10 @@ async function checkHealth() {
 }
 
 function render(tasks) {
+  const done = tasks.filter((t) => t.done).length;
+  counter.textContent = tasks.length
+    ? `${done} de ${tasks.length} tareas completadas`
+    : 'No hay tareas todavía';
   list.innerHTML = '';
   for (const task of tasks) {
     const li = document.createElement('li');
