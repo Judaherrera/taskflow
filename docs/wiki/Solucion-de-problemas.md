@@ -10,3 +10,4 @@
 | CI falla en `npm ci` | `package-lock.json` desactualizado | `npm install` en `api/` y commitea el lock |
 | CD falla con `denied` en GHCR | Permisos de Actions | Settings → Actions → General → Workflow permissions → *Read and write* |
 | Windows: `init.sql` no se ejecuta | Finales de línea CRLF | `git config core.autocrlf input` y vuelve a clonar |
+| Contenedor `unhealthy` aunque el servicio funciona | En Alpine `localhost` resuelve primero a IPv6 (`::1`) y el servidor solo escucha en IPv4 | Usar `127.0.0.1` en el `HEALTHCHECK` o escuchar también en `[::]` (lo detectó nuestro CI) |
