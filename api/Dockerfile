@@ -9,7 +9,7 @@
 # ---------------------------------------------------------------
 
 # Etapa 1: instalar dependencias de producción
-FROM node:22-alpine AS deps
+FROM node:26-alpine AS deps
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci --omit=dev && npm cache clean --force
@@ -18,7 +18,7 @@ RUN npm ci --omit=dev && npm cache clean --force
 # Se construye con: docker build --target test ./api   (el pipeline de CI lo hace)
 # BuildKit solo construye las etapas que la etapa final necesita, por eso
 # un "docker compose build" normal se salta esta etapa y es más rápido.
-FROM node:22-alpine AS test
+FROM node:26-alpine AS test
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
@@ -26,7 +26,7 @@ COPY . .
 RUN npm run lint && npm test
 
 # Etapa 3: imagen final, solo lo necesario para correr
-FROM node:22-alpine AS runtime
+FROM node:26-alpine AS runtime
 ENV NODE_ENV=production
 WORKDIR /app
 COPY --from=deps --chown=node:node /app/node_modules ./node_modules
