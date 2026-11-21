@@ -1,6 +1,6 @@
 # Imagen del frontend: Nginx sin privilegios de root.
 # nginx-unprivileged escucha en el puerto 8080 (los puertos <1024 requieren root).
-FROM nginxinc/nginx-unprivileged:1.27-alpine
+FROM nginxinc/nginx-unprivileged:1.31-alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY public/ /usr/share/nginx/html/
